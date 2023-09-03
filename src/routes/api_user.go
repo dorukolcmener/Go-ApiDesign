@@ -29,7 +29,7 @@ func getUser(c *fiber.Ctx) error {
 	id, ok := c.Queries()["id"]
 	index, err := strconv.Atoi(id)
 
-	if !ok || (err != nil) || index < 0 || index > len(users) {
+	if !ok || (err != nil) || index < 0 || index > len(users)-1 {
 		return fiber.NewError(fiber.StatusBadRequest, "Unknown request.")
 	}
 	return c.JSON(users[index])
